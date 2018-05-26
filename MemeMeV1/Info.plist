@@ -43,5 +43,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera access needed to make a killer meme.</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Photo access need to make a killer meme.</string>
 </dict>
 </plist>
