@@ -60,46 +60,46 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xpi-kD-bid">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4h-sG-gkR">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t6I-00-0nn">
                                 <rect key="frame" x="12" y="113" width="351" height="33"/>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="27"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zln-LK-jCj">
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="27"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1gP-GH-ofe">
                                 <rect key="frame" x="12" y="671" width="351" height="33"/>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="27"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="27"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pKn-w2-sfZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2Hf-Y0-zia"/>
                             <constraint firstItem="pKn-w2-sfZ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="51N-cW-AJa"/>
+                            <constraint firstItem="t6I-00-0nn" firstAttribute="top" secondItem="pKn-w2-sfZ" secondAttribute="bottom" constant="25" id="5vZ-sF-sUE"/>
                             <constraint firstItem="Xpi-kD-bid" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5vr-Z5-SBa"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Zln-LK-jCj" secondAttribute="trailing" constant="12" id="8l5-SI-oHO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t6I-00-0nn" secondAttribute="trailing" constant="12" id="Ekt-1g-O0p"/>
+                            <constraint firstItem="7Cs-kv-suD" firstAttribute="top" secondItem="1gP-GH-ofe" secondAttribute="bottom" constant="25" id="FGB-ct-m5M"/>
                             <constraint firstItem="7Cs-kv-suD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="IrF-Jb-b6R"/>
-                            <constraint firstItem="Zln-LK-jCj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="Iwq-wz-A4A"/>
-                            <constraint firstItem="U4h-sG-gkR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="KLz-Wz-USR"/>
                             <constraint firstItem="Xpi-kD-bid" firstAttribute="top" secondItem="pKn-w2-sfZ" secondAttribute="bottom" id="Pcj-ZA-TSc"/>
                             <constraint firstItem="7Cs-kv-suD" firstAttribute="top" secondItem="Xpi-kD-bid" secondAttribute="bottom" id="Swj-NR-W8c"/>
                             <constraint firstItem="pKn-w2-sfZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vp5-WC-DNM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1gP-GH-ofe" secondAttribute="trailing" constant="12" id="WUb-gP-qhz"/>
                             <constraint firstItem="Xpi-kD-bid" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="bRt-HN-4QQ"/>
                             <constraint firstItem="7Cs-kv-suD" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fDG-NX-iXS"/>
-                            <constraint firstItem="7Cs-kv-suD" firstAttribute="top" secondItem="Zln-LK-jCj" secondAttribute="bottom" constant="25" id="jGJ-ta-CUA"/>
                             <constraint firstItem="7Cs-kv-suD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ob6-yU-JlH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U4h-sG-gkR" secondAttribute="trailing" constant="12" id="pC5-Ys-Waj"/>
-                            <constraint firstItem="U4h-sG-gkR" firstAttribute="top" secondItem="pKn-w2-sfZ" secondAttribute="bottom" constant="25" id="xCx-PA-1mf"/>
+                            <constraint firstItem="t6I-00-0nn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="pHr-ay-eIe"/>
+                            <constraint firstItem="1gP-GH-ofe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="zRO-MV-nK9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="bottomLabel" destination="Zln-LK-jCj" id="C9p-9c-NeO"/>
+                        <outlet property="bottomTextField" destination="1gP-GH-ofe" id="T2s-bC-7bC"/>
                         <outlet property="cameraButton" destination="kzo-nb-QNC" id="nIL-ZX-qzK"/>
                         <outlet property="imageView" destination="Xpi-kD-bid" id="99A-xt-sDc"/>
                         <outlet property="shareButton" destination="wQI-p7-FTq" id="lOj-iw-Llp"/>
-                        <outlet property="topLabel" destination="U4h-sG-gkR" id="2Ce-41-Mjr"/>
+                        <outlet property="topTextField" destination="t6I-00-0nn" id="kX2-L1-pHf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
