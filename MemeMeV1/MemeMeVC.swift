@@ -12,13 +12,14 @@ class MemeMeVC: UIViewController {
     
     // Mark - Global Variables
     
-    
     // Mark - @IBOutlets
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var topToolbar: UIToolbar!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
     
     // Mark - viewDidLoad
     override func viewDidLoad() {
@@ -50,9 +51,16 @@ class MemeMeVC: UIViewController {
 
     // Mark - @IBActions
     @IBAction func shareAction(_ sender: Any) {
+        let meme = Meme(topText: topTextField.text!, BottomText: bottomTextField.text!, originalImage: imageView.image!, memeImage: generateMeme())
+        
+        let activityVC = UIActivityViewController(activityItems: [meme.memeImage], applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
     }
     
     @IBAction func cancelAction(_ sender: Any) {
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        imageView.image = nil
     }
     
     @IBAction func cameraAction(_ sender: Any) {
@@ -89,6 +97,26 @@ class MemeMeVC: UIViewController {
         
         topTextField.textAlignment = .center
         bottomTextField.textAlignment = .center
+    }
+    
+    func generateMeme() -> UIImage {
+        // Hide navigation bar
+        self.navigationController?.isNavigationBarHidden = true
+        topToolbar.isHidden = true
+        bottomToolbar.isHidden = true
+        
+        // Render view into an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memeImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        // Unhide navigation bar
+        self.navigationController?.isNavigationBarHidden = false
+        topToolbar.isHidden = false
+        bottomToolbar.isHidden = false
+        
+        return memeImage
     }
     
     func subscribeToKeyboardNotifications() {

@@ -47,5 +47,9 @@
 	<string>Camera access needed to make a killer meme.</string>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>Photo access need to make a killer meme.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Save your killer meme to photos.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Save your killer meme to photos.</string>
 </dict>
 </plist>
