@@ -11,6 +11,7 @@ import UIKit
 class MemeMeVC: UIViewController {
     
     // Mark - Global Variables
+    var isSharingEnabled = false
     
     // Mark - @IBOutlets
     @IBOutlet weak var topTextField: UITextField!
@@ -20,10 +21,16 @@ class MemeMeVC: UIViewController {
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var topToolbar: UIToolbar!
     @IBOutlet weak var bottomToolbar: UIToolbar!
+    @IBOutlet weak var memeViewContainer: UIView!
+    @IBOutlet weak var introView: UIView!
     
     // Mark - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Disable shareButton until image is set
+        isSharingEnabled = false
+        shareButton.isEnabled = isSharingEnabled
        
         // Camera enabled if available
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -34,6 +41,11 @@ class MemeMeVC: UIViewController {
         
         // Set UITextField formatting
         setTextFormatting()
+        
+        // Set initial view state
+        introView.isHidden = false
+        memeViewContainer.isHidden = true
+        
     }
     
     // Mark - viewWillAppear
@@ -61,12 +73,16 @@ class MemeMeVC: UIViewController {
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         imageView.image = nil
+        shareButton.isEnabled = false
+        introView.isHidden = false
+        memeViewContainer.isHidden = true
     }
     
     @IBAction func cameraAction(_ sender: Any) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         pickerController.sourceType = .camera
+        pickerController.allowsEditing = true
         present(pickerController, animated: true) {
             return
         }
@@ -76,10 +92,13 @@ class MemeMeVC: UIViewController {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         pickerController.sourceType = .photoLibrary
+        pickerController.allowsEditing = true
         present(pickerController, animated: true) {
             return
         }
     }
+    
+    
     
     // Mark - Helper Functions
     
@@ -89,7 +108,6 @@ class MemeMeVC: UIViewController {
             NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
             NSAttributedStringKey.strokeWidth.rawValue: -3,
             NSAttributedStringKey.font.rawValue: UIFont(name: "Impact", size: 40)!
-            
         ]
         
         topTextField.defaultTextAttributes = textFieldAttributes
@@ -107,7 +125,8 @@ class MemeMeVC: UIViewController {
         
         // Render view into an image
         UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+//        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        memeViewContainer.drawHierarchy(in: memeViewContainer.frame, afterScreenUpdates: true)
         let memeImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
@@ -155,7 +174,13 @@ extension MemeMeVC: UIImagePickerControllerDelegate {
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        introView.isHidden = true
+        memeViewContainer.isHidden = false
+        shareButton.isEnabled = true
+        
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        
         dismiss(animated: true, completion: nil)
     }
 }
