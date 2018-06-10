@@ -18,33 +18,30 @@ class MemeMeVC: UIViewController {
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var albumButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var topToolbar: UIToolbar!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var memeViewContainer: UIView!
     @IBOutlet weak var introView: UIView!
+    @IBOutlet weak var topTextFieldTopContraint: NSLayoutConstraint!
+    
     
     // Mark - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Disable shareButton until image is set
-        isSharingEnabled = false
-        shareButton.isEnabled = isSharingEnabled
-       
-        // Camera enabled if available
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        setInitViewProperties()
+        
+        // Set UITextField formatting
+        setTextFormatting()
         
         // Set UITextField delegate
         topTextField.delegate = self
         bottomTextField.delegate = self
         
-        // Set UITextField formatting
-        setTextFormatting()
-        
-        // Set initial view state
-        introView.isHidden = false
-        memeViewContainer.isHidden = true
+        imageView.layer.borderColor = UIColor.red.cgColor
+        imageView.layer.borderWidth = 2
         
     }
     
@@ -70,32 +67,15 @@ class MemeMeVC: UIViewController {
     }
     
     @IBAction func cancelAction(_ sender: Any) {
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
-        imageView.image = nil
-        shareButton.isEnabled = false
-        introView.isHidden = false
-        memeViewContainer.isHidden = true
+       setInitViewProperties()
     }
     
     @IBAction func cameraAction(_ sender: Any) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = .camera
-        pickerController.allowsEditing = true
-        present(pickerController, animated: true) {
-            return
-        }
+        presentImagePicker(for: .camera)
     }
     
     @IBAction func albumAction(_ sender: Any) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = .photoLibrary
-        pickerController.allowsEditing = true
-        present(pickerController, animated: true) {
-            return
-        }
+        presentImagePicker(for: .photoLibrary)
     }
     
     
@@ -115,6 +95,39 @@ class MemeMeVC: UIViewController {
         
         topTextField.textAlignment = .center
         bottomTextField.textAlignment = .center
+    }
+    
+    func presentImagePicker(for source: UIImagePickerControllerSourceType) {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = source
+        pickerController.allowsEditing = true
+        present(pickerController, animated: true) {
+            return
+        }
+    }
+    
+    func setInitViewProperties() {
+        // Set text for textfields
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        
+        // Disable shareButton until image is set
+        isSharingEnabled = false
+        shareButton.isEnabled = isSharingEnabled
+        
+        // Camera enabled if available
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        albumButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.photoLibrary)
+        
+        
+        // Set initial view state
+        introView.isHidden = false
+        memeViewContainer.isHidden = true
+    }
+    
+    func positionTextFields() {
+       
     }
     
     func generateMeme() -> UIImage {
@@ -174,12 +187,14 @@ extension MemeMeVC: UIImagePickerControllerDelegate {
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
+    
         introView.isHidden = true
         memeViewContainer.isHidden = false
         shareButton.isEnabled = true
         
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        
+        positionTextFields()
         
         dismiss(animated: true, completion: nil)
     }
@@ -200,11 +215,15 @@ extension MemeMeVC: UITextFieldDelegate {
             textField.text = ""
         }
         
-        textField.layer.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 10
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.layer.backgroundColor = nil
+        textField.layer.borderColor = nil
+        textField.layer.borderWidth = 0
+        textField.layer.cornerRadius = 0
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

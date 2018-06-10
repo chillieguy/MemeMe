@@ -134,6 +134,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="albumButton" destination="e9s-Hh-ki9" id="nZj-zV-KOR"/>
                         <outlet property="bottomTextField" destination="1gP-GH-ofe" id="T2s-bC-7bC"/>
                         <outlet property="bottomToolbar" destination="7Cs-kv-suD" id="mQe-sG-95d"/>
                         <outlet property="cameraButton" destination="kzo-nb-QNC" id="nIL-ZX-qzK"/>
@@ -142,6 +143,7 @@
                         <outlet property="memeViewContainer" destination="vKC-qh-s6I" id="W1V-yf-Zcd"/>
                         <outlet property="shareButton" destination="wQI-p7-FTq" id="lOj-iw-Llp"/>
                         <outlet property="topTextField" destination="t6I-00-0nn" id="kX2-L1-pHf"/>
+                        <outlet property="topTextFieldTopContraint" destination="xHX-fd-faj" id="Jxh-qG-sgt"/>
                         <outlet property="topToolbar" destination="pKn-w2-sfZ" id="FiT-fK-OlB"/>
                     </connections>
                 </viewController>
