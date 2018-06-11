@@ -133,7 +133,7 @@ class MemeMeVC: UIViewController {
         
         // Render view into an image
         UIGraphicsBeginImageContext(self.view.frame.size)
-//        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+
         memeViewContainer.drawHierarchy(in: memeViewContainer.frame, afterScreenUpdates: true)
         let memeImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
