@@ -24,8 +24,6 @@ class MemeMeVC: UIViewController {
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var memeViewContainer: UIView!
     @IBOutlet weak var introView: UIView!
-    @IBOutlet weak var topTextFieldTopContraint: NSLayoutConstraint!
-    
     
     // Mark - viewDidLoad
     override func viewDidLoad() {
@@ -39,9 +37,6 @@ class MemeMeVC: UIViewController {
         // Set UITextField delegate
         topTextField.delegate = self
         bottomTextField.delegate = self
-        
-        imageView.layer.borderColor = UIColor.red.cgColor
-        imageView.layer.borderWidth = 2
         
     }
     
@@ -192,7 +187,7 @@ extension MemeMeVC: UIImagePickerControllerDelegate {
         memeViewContainer.isHidden = false
         shareButton.isEnabled = true
         
-        imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        imageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
         
         positionTextFields()
         

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -84,33 +85,35 @@
                                 <rect key="frame" x="0.0" y="94" width="375" height="634"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xpi-kD-bid">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="634"/>
+                                        <rect key="frame" x="0.0" y="129.66666666666663" width="375" height="375"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Xpi-kD-bid" secondAttribute="height" multiplier="1:1" id="0w0-k5-bky"/>
+                                        </constraints>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t6I-00-0nn">
-                                        <rect key="frame" x="0.0" y="12" width="375" height="33"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="t6I-00-0nn">
+                                        <rect key="frame" x="0.0" y="137.66666666666666" width="375" height="33"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="27"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1gP-GH-ofe">
-                                        <rect key="frame" x="0.0" y="589" width="375" height="33"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1gP-GH-ofe">
+                                        <rect key="frame" x="0.0" y="463.66666666666663" width="375" height="33"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="27"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="0.91764705879999997" green="0.66274509800000003" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Xpi-kD-bid" secondAttribute="bottom" id="0KM-wd-Be0"/>
                                     <constraint firstAttribute="trailing" secondItem="1gP-GH-ofe" secondAttribute="trailing" id="17e-AF-ZzO"/>
                                     <constraint firstAttribute="trailing" secondItem="t6I-00-0nn" secondAttribute="trailing" id="2ZL-mN-eNi"/>
-                                    <constraint firstItem="Xpi-kD-bid" firstAttribute="top" secondItem="vKC-qh-s6I" secondAttribute="top" id="NFu-qg-NKA"/>
-                                    <constraint firstAttribute="trailing" secondItem="Xpi-kD-bid" secondAttribute="trailing" id="dns-Nk-RPa"/>
+                                    <constraint firstItem="Xpi-kD-bid" firstAttribute="centerX" secondItem="vKC-qh-s6I" secondAttribute="centerX" id="HhK-Gs-MYO"/>
+                                    <constraint firstItem="Xpi-kD-bid" firstAttribute="width" secondItem="vKC-qh-s6I" secondAttribute="width" id="Pru-oK-4ih"/>
+                                    <constraint firstItem="Xpi-kD-bid" firstAttribute="centerY" secondItem="vKC-qh-s6I" secondAttribute="centerY" id="afU-ro-rb5"/>
                                     <constraint firstItem="1gP-GH-ofe" firstAttribute="leading" secondItem="vKC-qh-s6I" secondAttribute="leading" id="f0x-ON-vxN"/>
                                     <constraint firstItem="t6I-00-0nn" firstAttribute="leading" secondItem="vKC-qh-s6I" secondAttribute="leading" id="gk9-qp-Jbt"/>
-                                    <constraint firstAttribute="bottom" secondItem="1gP-GH-ofe" secondAttribute="bottom" constant="12" id="uPU-PY-vuV"/>
-                                    <constraint firstItem="Xpi-kD-bid" firstAttribute="leading" secondItem="vKC-qh-s6I" secondAttribute="leading" id="vKb-hu-IuL"/>
-                                    <constraint firstItem="t6I-00-0nn" firstAttribute="top" secondItem="vKC-qh-s6I" secondAttribute="top" constant="12" id="xHX-fd-faj"/>
+                                    <constraint firstItem="Xpi-kD-bid" firstAttribute="bottom" secondItem="1gP-GH-ofe" secondAttribute="bottom" constant="8" id="uPU-PY-vuV"/>
+                                    <constraint firstItem="t6I-00-0nn" firstAttribute="top" secondItem="Xpi-kD-bid" secondAttribute="top" constant="8" id="xHX-fd-faj"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -143,7 +146,6 @@
                         <outlet property="memeViewContainer" destination="vKC-qh-s6I" id="W1V-yf-Zcd"/>
                         <outlet property="shareButton" destination="wQI-p7-FTq" id="lOj-iw-Llp"/>
                         <outlet property="topTextField" destination="t6I-00-0nn" id="kX2-L1-pHf"/>
-                        <outlet property="topTextFieldTopContraint" destination="xHX-fd-faj" id="Jxh-qG-sgt"/>
                         <outlet property="topToolbar" destination="pKn-w2-sfZ" id="FiT-fK-OlB"/>
                     </connections>
                 </viewController>
