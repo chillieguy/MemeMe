@@ -17,4 +17,5 @@ Sources used while building app:
 * [Apple Developers](https://developer.apple.com/documentation)
 * [Fundamentals of NSNotificationCenter in Swift](https://developer.apple.com/documentation/uikit/uiimagepickercontrollerdelegate)
 * [stackoverflow](https://stackoverflow.com/)
+* [The Blind Squirrel - Working with UIActivityViewController's CompletionWithItemsHandler](https://seanwernimont.weebly.com/blog/december-02nd-2015)
 * [Logomakr](https://logomakr.com/) - For App Icons
