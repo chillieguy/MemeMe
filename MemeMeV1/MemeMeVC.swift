@@ -12,6 +12,7 @@ class MemeMeVC: UIViewController {
     
     // Mark - Global Variables
     var isSharingEnabled = false
+    var arrayOfMemes = [Meme]()
     
     // Mark - @IBOutlets
     @IBOutlet weak var topTextField: UITextField!
@@ -34,10 +35,6 @@ class MemeMeVC: UIViewController {
         // Set UITextField formatting
         setTextFormatting()
         
-        // Set UITextField delegate
-        topTextField.delegate = self
-        bottomTextField.delegate = self
-        
     }
     
     // Mark - viewWillAppear
@@ -57,8 +54,14 @@ class MemeMeVC: UIViewController {
     @IBAction func shareAction(_ sender: Any) {
         let meme = Meme(topText: topTextField.text!, BottomText: bottomTextField.text!, originalImage: imageView.image!, memeImage: generateMeme())
         
-        let activityVC = UIActivityViewController(activityItems: [meme.memeImage], applicationActivities: nil)
-        present(activityVC, animated: true, completion: nil)
+        let shareController = UIActivityViewController(activityItems: [meme.memeImage], applicationActivities: nil)
+        shareController.completionWithItemsHandler = {
+            (activityType, completed, returnedItems, activityError) -> () in
+            if completed {
+                self.saveMeme(meme: meme)
+            }
+        }
+        present(shareController, animated: true, completion: nil)
     }
     
     @IBAction func cancelAction(_ sender: Any) {
@@ -78,6 +81,10 @@ class MemeMeVC: UIViewController {
     // Mark - Helper Functions
     
     func setTextFormatting() {
+        // Set UITextField delegate
+        topTextField.delegate = self
+        bottomTextField.delegate = self
+        
         let textFieldAttributes: [String: Any] = [
             NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
             NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
@@ -96,7 +103,7 @@ class MemeMeVC: UIViewController {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         pickerController.sourceType = source
-        pickerController.allowsEditing = true
+        pickerController.allowsEditing = false
         present(pickerController, animated: true) {
             return
         }
@@ -123,6 +130,11 @@ class MemeMeVC: UIViewController {
     
     func positionTextFields() {
        
+    }
+    
+    func saveMeme(meme: Meme) {
+        arrayOfMemes.append(meme)
+        print("Count of items in arrayOfMemes: \(arrayOfMemes.count)")
     }
     
     func generateMeme() -> UIImage {
@@ -187,7 +199,7 @@ extension MemeMeVC: UIImagePickerControllerDelegate {
         memeViewContainer.isHidden = false
         shareButton.isEnabled = true
         
-        imageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
+        imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         
         positionTextFields()
         
