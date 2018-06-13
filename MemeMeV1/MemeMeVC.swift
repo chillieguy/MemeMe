@@ -33,7 +33,8 @@ class MemeMeVC: UIViewController {
         setInitViewProperties()
         
         // Set UITextField formatting
-        setTextFormatting()
+        setFormatting(forTextField: topTextField)
+        setFormatting(forTextField: bottomTextField)
         
     }
     
@@ -80,10 +81,9 @@ class MemeMeVC: UIViewController {
     
     // Mark - Helper Functions
     
-    func setTextFormatting() {
+    func setFormatting(forTextField textField: UITextField) {
         // Set UITextField delegate
-        topTextField.delegate = self
-        bottomTextField.delegate = self
+        textField.delegate = self
         
         let textFieldAttributes: [String: Any] = [
             NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
@@ -92,11 +92,9 @@ class MemeMeVC: UIViewController {
             NSAttributedStringKey.font.rawValue: UIFont(name: "Impact", size: 40)!
         ]
         
-        topTextField.defaultTextAttributes = textFieldAttributes
-        bottomTextField.defaultTextAttributes = textFieldAttributes
+        textField.defaultTextAttributes = textFieldAttributes
         
-        topTextField.textAlignment = .center
-        bottomTextField.textAlignment = .center
+        textField.textAlignment = .center
     }
     
     func presentImagePicker(for source: UIImagePickerControllerSourceType) {
