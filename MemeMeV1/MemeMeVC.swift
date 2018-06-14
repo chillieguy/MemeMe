@@ -126,10 +126,6 @@ class MemeMeVC: UIViewController {
         memeViewContainer.isHidden = true
     }
     
-    func positionTextFields() {
-       
-    }
-    
     func saveMeme(meme: Meme) {
         arrayOfMemes.append(meme)
         print("Count of items in arrayOfMemes: \(arrayOfMemes.count)")
@@ -137,19 +133,19 @@ class MemeMeVC: UIViewController {
     
     func generateMeme() -> UIImage {
         // Hide navigation bar
-        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true
         topToolbar.isHidden = true
         bottomToolbar.isHidden = true
         
         // Render view into an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIGraphicsBeginImageContext(view.frame.size)
 
         memeViewContainer.drawHierarchy(in: memeViewContainer.frame, afterScreenUpdates: true)
         let memeImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         // Unhide navigation bar
-        self.navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
         topToolbar.isHidden = false
         bottomToolbar.isHidden = false
         
@@ -198,8 +194,6 @@ extension MemeMeVC: UIImagePickerControllerDelegate {
         shareButton.isEnabled = true
         
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        
-        positionTextFields()
         
         dismiss(animated: true, completion: nil)
     }
