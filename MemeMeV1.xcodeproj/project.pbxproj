@@ -15,6 +15,9 @@
 		FF0A738020B8392B00ECD3A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF0A737E20B8392B00ECD3A3 /* LaunchScreen.storyboard */; };
 		FF0A738920B8436B00ECD3A3 /* Impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF0A738820B8436B00ECD3A3 /* Impact.ttf */; };
 		FF90DAFB20D2258B00F6CD5D /* MemeMeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF90DAFA20D2258B00F6CD5D /* MemeMeTableVC.swift */; };
+		FF90DB1E20D556EA00F6CD5D /* MemeMeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF90DB1D20D556EA00F6CD5D /* MemeMeTableViewCell.swift */; };
+		FF90DB2020D56F2100F6CD5D /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF90DB1F20D56F2100F6CD5D /* Data.swift */; };
+		FF90DB2220D578C600F6CD5D /* memeTest.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF90DB2120D578C600F6CD5D /* memeTest.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		FF0A738120B8392B00ECD3A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF0A738820B8436B00ECD3A3 /* Impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Impact.ttf; sourceTree = "<group>"; };
 		FF90DAFA20D2258B00F6CD5D /* MemeMeTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeTableVC.swift; sourceTree = "<group>"; };
+		FF90DB1D20D556EA00F6CD5D /* MemeMeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeTableViewCell.swift; sourceTree = "<group>"; };
+		FF90DB1F20D56F2100F6CD5D /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		FF90DB2120D578C600F6CD5D /* memeTest.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = memeTest.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,7 @@
 		FF0A738720B8395700ECD3A3 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				FF90DB2120D578C600F6CD5D /* memeTest.jpg */,
 				FF0A738820B8436B00ECD3A3 /* Impact.ttf */,
 				FF0A737520B8392A00ECD3A3 /* AppDelegate.swift */,
 				FF0A737C20B8392B00ECD3A3 /* Assets.xcassets */,
@@ -84,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				FF03BD4F20BD86D9000A2804 /* Meme.swift */,
+				FF90DB1F20D56F2100F6CD5D /* Data.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -91,10 +99,19 @@
 		FF90DAF720D2242700F6CD5D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FF90DB2320D5F71900F6CD5D /* TableView */,
 				FF0A737720B8392A00ECD3A3 /* MemeMeVC.swift */,
-				FF90DAFA20D2258B00F6CD5D /* MemeMeTableVC.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FF90DB2320D5F71900F6CD5D /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				FF90DAFA20D2258B00F6CD5D /* MemeMeTableVC.swift */,
+				FF90DB1D20D556EA00F6CD5D /* MemeMeTableViewCell.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,6 +176,7 @@
 				FF0A738020B8392B00ECD3A3 /* LaunchScreen.storyboard in Resources */,
 				FF0A737D20B8392B00ECD3A3 /* Assets.xcassets in Resources */,
 				FF0A737B20B8392A00ECD3A3 /* Main.storyboard in Resources */,
+				FF90DB2220D578C600F6CD5D /* memeTest.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +188,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF0A737820B8392A00ECD3A3 /* MemeMeVC.swift in Sources */,
+				FF90DB2020D56F2100F6CD5D /* Data.swift in Sources */,
+				FF90DB1E20D556EA00F6CD5D /* MemeMeTableViewCell.swift in Sources */,
 				FF90DAFB20D2258B00F6CD5D /* MemeMeTableVC.swift in Sources */,
 				FF03BD5020BD86D9000A2804 /* Meme.swift in Sources */,
 				FF0A737620B8392A00ECD3A3 /* AppDelegate.swift in Sources */,

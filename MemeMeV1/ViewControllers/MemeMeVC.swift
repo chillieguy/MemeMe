@@ -10,10 +10,6 @@ import UIKit
 
 class MemeMeVC: UIViewController {
     
-    // Mark - Global Variables
-    var isSharingEnabled = false
-    var arrayOfMemes = [Meme]()
-    
     // Mark - @IBOutlets
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
@@ -60,6 +56,8 @@ class MemeMeVC: UIViewController {
             (activityType, completed, returnedItems, activityError) -> () in
             if completed {
                 self.saveMeme(meme: meme)
+                self.navigationController?.popViewController(animated: true)
+                
             }
         }
         present(shareController, animated: true, completion: nil)
@@ -113,8 +111,7 @@ class MemeMeVC: UIViewController {
         bottomTextField.text = "BOTTOM"
         
         // Disable shareButton until image is set
-        isSharingEnabled = false
-        shareButton.isEnabled = isSharingEnabled
+        shareButton.isEnabled = false
         
         // Camera enabled if available
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -127,8 +124,9 @@ class MemeMeVC: UIViewController {
     }
     
     func saveMeme(meme: Meme) {
-        arrayOfMemes.append(meme)
-        print("Count of items in arrayOfMemes: \(arrayOfMemes.count)")
+        Data.memeArray.append(meme)
+        debugPrint("Number of memes in array: \(Data.memeArray.count)")
+        
     }
     
     func generateMeme() -> UIImage {
