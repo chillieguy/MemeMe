@@ -22,13 +22,17 @@ class MemeMeTableVC: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        self.tableView.reloadData()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tabBarController?.tabBar.isHidden = false
+        tableView.reloadData()
+
     }
     
     @IBAction func newMeme(_ sender: Any) {
-        performSegue(withIdentifier: "CreateMeme", sender: nil)
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MemeMeVC") as! MemeMeVC
+            present(vc, animated: true)
     }
     
 
@@ -48,6 +52,17 @@ extension MemeMeTableVC: UITableViewDataSource {
         cell.setup(meme: Data.memeArray[indexPath.row])
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        performSegue(withIdentifier: "ViewMeme", sender: nil)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! DetailVC
+        destinationVC.passedMeme = Data.memeArray[(tableView.indexPathForSelectedRow?.row)!]
     }
     
 }

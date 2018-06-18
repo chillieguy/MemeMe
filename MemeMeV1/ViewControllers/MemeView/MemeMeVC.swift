@@ -38,6 +38,10 @@ class MemeMeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
+        
+        navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
+        
     }
     
     // Mark - viewWillDisappear
@@ -56,7 +60,9 @@ class MemeMeVC: UIViewController {
             (activityType, completed, returnedItems, activityError) -> () in
             if completed {
                 self.saveMeme(meme: meme)
-                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: {
+                    return
+                })
                 
             }
         }
@@ -64,7 +70,9 @@ class MemeMeVC: UIViewController {
     }
     
     @IBAction func cancelAction(_ sender: Any) {
-       setInitViewProperties()
+        dismiss(animated: true) {
+            return
+        }
     }
     
     @IBAction func cameraAction(_ sender: Any) {
@@ -103,6 +111,7 @@ class MemeMeVC: UIViewController {
         present(pickerController, animated: true) {
             return
         }
+
     }
     
     func setInitViewProperties() {

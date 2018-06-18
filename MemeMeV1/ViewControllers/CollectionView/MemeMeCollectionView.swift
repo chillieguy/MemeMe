@@ -17,18 +17,21 @@ class MemeMeCollectionView: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        
-        Data.memeArray.append(Meme(topText: "Top Test", BottomText: "Bottom Test", originalImage: #imageLiteral(resourceName: "memeTest.jpg"), memeImage: #imageLiteral(resourceName: "memeTest.jpg")))
 
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tabBarController?.tabBar.isHidden = false
         collectionView.reloadData()
+
     }
 
     @IBAction func newMeme(_ sender: Any) {
-        performSegue(withIdentifier: "CreateMeme", sender: nil)
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MemeMeVC") as! MemeMeVC
+        present(vc, animated: true) {
+            return
+        }
     }
     
 }
@@ -51,6 +54,9 @@ extension MemeMeCollectionView: UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ViewMeme", sender: nil)
+    }
     
 }
 
