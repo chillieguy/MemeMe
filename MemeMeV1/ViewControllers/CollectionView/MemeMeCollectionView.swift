@@ -55,11 +55,19 @@ extension MemeMeCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ViewMeme", sender: nil)
+        // Different segue from tableView for practice
+        let destinationVC = storyboard?.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
+        destinationVC.passedMeme = Data.memeArray[indexPath.row]
+        navigationController?.pushViewController(destinationVC, animated: true)
+        
     }
-    
+   
 }
 
 extension MemeMeCollectionView: UICollectionViewDelegate {
+    
+}
+
+extension MemeMeCollectionView: UITextFieldDelegate {
     
 }

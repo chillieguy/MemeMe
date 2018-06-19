@@ -46,7 +46,6 @@ extension MemeMeTableVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MemeMeTableViewCell
         
         cell.setup(meme: Data.memeArray[indexPath.row])
@@ -55,7 +54,7 @@ extension MemeMeTableVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        // Different segue from collectionView for practice
         performSegue(withIdentifier: "ViewMeme", sender: nil)
         
     }
@@ -63,6 +62,22 @@ extension MemeMeTableVC: UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! DetailVC
         destinationVC.passedMeme = Data.memeArray[(tableView.indexPathForSelectedRow?.row)!]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            Data.memeArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+        }
+        
+        let shareAction = UITableViewRowAction(style: .normal, title: "Share") { (action, indexPath) in
+            let action = UIActivityViewController(activityItems: [Data.memeArray[indexPath.row].memeImage as Any], applicationActivities: nil)
+            self.present(action, animated: true, completion: nil)
+        }
+        
+        return [deleteAction, shareAction]
     }
     
 }

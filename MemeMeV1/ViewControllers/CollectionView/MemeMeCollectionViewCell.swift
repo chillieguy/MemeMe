@@ -20,6 +20,5 @@ class MemeMeCollectionViewCell: UICollectionViewCell {
         memeImage.image = meme.originalImage
         topLabel.text = meme.topText
         bottomLabel.text = meme.BottomText
-        cardView.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
     }
 }
