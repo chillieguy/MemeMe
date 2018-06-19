@@ -3,6 +3,13 @@
 
 MemeMe is project number two of the Udacity iOS Nanaodegree.  Completing this project allowed me to get experience in the following areas:
 
+# Version 2
+* UITableView
+* UICollectionView
+* UITabView
+
+
+# Version 1
 * UIImagePicker
 * UIImageView
 * Completion Handlers
